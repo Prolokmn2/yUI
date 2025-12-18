@@ -1,4 +1,4 @@
-local BASE = "https://raw.githubusercontent.com/Prolokmn2/yUI/refs/heads/main/yui/src/"
+local BASE = "https://raw.githubusercontent.com/Prolokmn2/yUI/main/src/"
 
 local function fetch(path)
     return loadstring(game:HttpGet(BASE .. path))()
