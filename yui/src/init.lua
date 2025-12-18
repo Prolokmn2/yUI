@@ -1,21 +1,23 @@
+local BASE = "https://raw.githubusercontent.com/Prolokmn2/yUI/refs/heads/main/yui/src/"
+
+local function fetch(path)
+    return loadstring(game:HttpGet(BASE .. path))()
+end
+
 local yUI = {}
 yUI.Components = {}
 yUI.Utils = {}
 
--- Load components
-local componentsFolder = script:WaitForChild("components")
-for _, module in ipairs(componentsFolder:GetChildren()) do
-    if module:IsA("ModuleScript") then
-        yUI.Components[module.Name] = require(module)
-    end
-end
+-- utils
+yUI.Utils.TweenUtils = fetch("utils/TweenUtils.lua")
 
--- Load utils
-local utilsFolder = script:WaitForChild("utils")
-for _, module in ipairs(utilsFolder:GetChildren()) do
-    if module:IsA("ModuleScript") then
-        yUI.Utils[module.Name] = require(module)
-    end
-end
+-- components
+yUI.Components.Window   = fetch("components/Window.lua")
+yUI.Components.Button   = fetch("components/Button.lua")
+yUI.Components.Slider   = fetch("components/Slider.lua")
+yUI.Components.Toggle   = fetch("components/Toggle.lua")
+yUI.Components.Label    = fetch("components/Label.lua")
+yUI.Components.Debug    = fetch("components/Debug.lua")
+yUI.Components.FallBack = fetch("components/FallBack.lua")
 
 return yUI
